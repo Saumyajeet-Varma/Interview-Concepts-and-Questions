@@ -208,3 +208,317 @@ SELECT * FROM Customers
 WHERE NOT Country = 'India';
 ```
 
+# SQL INSERT INTO Statement
+
+The `INSERT INTO` statement is used to insert new records in a table
+
+It is possible to write the `INSERT INTO` statement in two ways:
+
+1. Specify both the column names and the values to be inserted
+
+```sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+```
+
+2. If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query. However, make sure the order of the values is in the same order as the columns in the table. Here, the `INSERT INTO` syntax would be as follows
+
+```sql
+INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+```
+
+### Demo Database
+
+| CustomerID | CustomerName          | ContactName      | Address                        | City     | PostalCode | Country |
+|------------|------------------------|------------------|--------------------------------|----------|------------|---------|
+| 89         | White Clover Markets    | Karl Jablonski   | 305 - 14th Ave. S. Suite 3B    | Seattle  | 98128      | USA     |
+| 90         | Wilman Kala             | Matti Karttunen  | Keskuskatu 45                  | Helsinki | 21240      | Finland |
+| 91         | Wolski                  | Zbyszek          | ul. Filtrowa 68                | Walla    | 01-012     | Poland  |
+
+### INSERT INTO Example
+
+```sql
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+```
+
+| CustomerID | CustomerName          | ContactName      | Address                        | City     | PostalCode | Country |
+|------------|------------------------|------------------|--------------------------------|----------|------------|---------|
+| 89         | White Clover Markets    | Karl Jablonski   | 305 - 14th Ave. S. Suite 3B    | Seattle  | 98128      | USA     |
+| 90         | Wilman Kala             | Matti Karttunen  | Keskuskatu 45                  | Helsinki | 21240      | Finland |
+| 91         | Wolski                  | Zbyszek          | ul. Filtrowa 68                | Walla    | 01-012     | Poland  |
+| 92         | Cardinal                | Tom B. Erichsen  | Skagen 21                      | Stavanger| 4006       | Norway  |
+
+### Insert Data Only in Specified Columns
+
+It is also possible to only insert data in specific columns.
+
+The following SQL statement will insert a new record, but only insert data in the "CustomerName", "City", and "Country" columns (CustomerID will be updated automatically)
+
+```sql
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+```
+
+| CustomerID | CustomerName          | ContactName      | Address                        | City      | PostalCode | Country |
+|------------|------------------------|------------------|--------------------------------|-----------|------------|---------|
+| 89         | White Clover Markets    | Karl Jablonski   | 305 - 14th Ave. S. Suite 3B    | Seattle   | 98128      | USA     |
+| 90         | Wilman Kala             | Matti Karttunen  | Keskuskatu 45                  | Helsinki  | 21240      | Finland |
+| 91         | Wolski                  | Zbyszek          | ul. Filtrowa 68                | Walla     | 01-012     | Poland  |
+| 92         | Cardinal                | null             | null                           | Stavanger | null       | Norway  |
+
+
+### Insert Multiple Rows
+
+It is also possible to insert multiple rows in one statement.
+
+To insert multiple rows of data, we use the same `INSERT INTO` statement, but with multiple values
+
+```sql
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES
+('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
+('Greasy Burger', 'Per Olsen', 'Gateveien 15', 'Sandnes', '4306', 'Norway'),
+('Tasty Tee', 'Finn Egan', 'Streetroad 19B', 'Liverpool', 'L1 0AA', 'UK');
+```
+
+| CustomerID | CustomerName          | ContactName      | Address                     | City      | PostalCode | Country |
+|------------|------------------------|------------------|------------------------------|-----------|------------|---------|
+| 89         | White Clover Markets    | Karl Jablonski    | 305 - 14th Ave. S. Suite 3B  | Seattle   | 98128      | USA     |
+| 90         | Wilman Kala             | Matti Karttunen   | Keskuskatu 45               | Helsinki  | 21240      | Finland |
+| 91         | Wolski                  | Zbyszek           | ul. Filtrowa 68             | Walla     | 01-012     | Poland  |
+| 92         | Cardinal                | Tom B. Erichsen   | Skagen 21                   | Stavanger | 4006       | Norway  |
+| 93         | Greasy Burger           | Per Olsen         | Gateveien 15                | Sandnes   | 4306       | Norway  |
+| 94         | Tasty Tee               | Finn Egan         | Streetroad 19B              | Liverpool | L1 0AA     | UK      |
+
+# SQL NULL Values
+
+A field with a `NULL` value is a field with no value.
+
+If a field in a table is optional, it is possible to insert a new record or update a record without adding a value to this field. Then, the field will be saved with a NULL value.
+
+A NULL value is different from a zero value or a field that contains spaces. A field with a NULL value is one that has been left blank during record creation.
+
+## How to Test for NULL Values?
+
+It is not possible to test for NULL values with comparison operators, such as `=`, `<`, or `<>`.
+
+We will have to use the `IS NULL` and `IS NOT NULL` operators instead.
+
+### IS NULL Syntax
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+```
+
+> The `IS NULL` operator is used to test for empty values (NULL values).
+
+### IS NOT NULL Syntax
+
+```sql
+SELECT column_names
+FROM table_name
+WHERE column_name IS NOT NULL;
+```
+
+> The `IS NOT NULL` operator is used to test for non-empty values (NOT NULL values).
+
+# SQL UPDATE Statement
+
+The `UPDATE` statement is used to modify the existing records in a table.
+
+```sql
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+```
+
+### Demo Database
+
+| CustomerID | CustomerName                    | ContactName        | Address                          | City        | PostalCode | Country |
+|------------|----------------------------------|--------------------|----------------------------------|-------------|------------|---------|
+| 1          | Alfreds Futterkiste              | Maria Anders       | Obere Str. 57                    | Berlin      | 12209      | Germany |
+| 2          | Ana Trujillo Emparedados y helados| Ana Trujillo       | Avda. de la Constitución 2222    | México D.F. | 05021      | Mexico  |
+| 3          | Antonio Moreno Taquería          | Antonio Moreno     | Mataderos 2312                   | México D.F. | 05023      | Mexico  |
+| 4          | Around the Horn                  | Thomas Hardy       | 120 Hanover Sq.                  | London      | WA1 1DP    | UK      |
+| 5          | Berglunds snabbköp                | Christina Berglund | Berguvsvägen 8                   | Luleå       | S-958 22   | Sweden  |
+
+### 1. UPDATE Table Example
+
+```sql
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+```
+
+| CustomerID | CustomerName                    | ContactName        | Address                       | City        | PostalCode | Country |
+|------------|----------------------------------|--------------------|-------------------------------|-------------|------------|---------|
+| 1          | Alfreds Futterkiste              | Alfred Schmidt     | Obere Str. 57                 | Frankfurt   | 12209      | Germany |
+| 2          | Ana Trujillo Emparedados y helados| Ana Trujillo       | Avda. de la Constitución 2222 | México D.F. | 05021      | Mexico  |
+| 3          | Antonio Moreno Taquería          | Antonio Moreno     | Mataderos 2312                | México D.F. | 05023      | Mexico  |
+| 4          | Around the Horn                  | Thomas Hardy       | 120 Hanover Sq.               | London      | WA1 1DP    | UK      |
+| 5          | Berglunds snabbköp                | Christina Berglund | Berguvsvägen 8                | Luleå       | S-958 22   | Sweden  |
+
+### 2. UPDATE Multiple Records
+
+It is the WHERE clause that determines how many records will be updated.
+
+```sql
+UPDATE Customers
+SET ContactName='Juan'
+WHERE Country='Mexico';
+```
+
+| CustomerID | CustomerName                    | ContactName        | Address                       | City        | PostalCode | Country |
+|------------|----------------------------------|--------------------|-------------------------------|-------------|------------|---------|
+| 1          | Alfreds Futterkiste              | Alfred Schmidt     | Obere Str. 57                 | Frankfurt   | 12209      | Germany |
+| 2          | Ana Trujillo Emparedados y helados| Juan               | Avda. de la Constitución 2222 | México D.F. | 05021      | Mexico  |
+| 3          | Antonio Moreno Taquería          | Juan               | Mataderos 2312                | México D.F. | 05023      | Mexico  |
+| 4          | Around the Horn                  | Thomas Hardy       | 120 Hanover Sq.               | London      | WA1 1DP    | UK      |
+| 5          | Berglunds snabbköp                | Christina Berglund | Berguvsvägen 8                | Luleå       | S-958 22   | Sweden  |
+
+### Update Warning !
+
+Be careful when updating records. If you omit the `WHERE` clause, ALL records will be updated!
+
+```sql
+UPDATE Customers
+SET ContactName='Juan';
+```
+
+| CustomerID | CustomerName                    | ContactName | Address                       | City        | PostalCode | Country |
+|------------|----------------------------------|-------------|-------------------------------|-------------|------------|---------|
+| 1          | Alfreds Futterkiste              | Juan        | Obere Str. 57                 | Frankfurt   | 12209      | Germany |
+| 2          | Ana Trujillo Emparedados y helados| Juan        | Avda. de la Constitución 2222 | México D.F. | 05021      | Mexico  |
+| 3          | Antonio Moreno Taquería          | Juan        | Mataderos 2312                | México D.F. | 05023      | Mexico  |
+| 4          | Around the Horn                  | Juan        | 120 Hanover Sq.               | London      | WA1 1DP    | UK      |
+| 5          | Berglunds snabbköp                | Juan        | Berguvsvägen 8                | Luleå       | S-958 22   | Sweden  |
+
+# SQL DELETE Statement
+
+The `DELETE` statement is used to delete existing records in a table.
+
+```sql
+DELETE FROM table_name WHERE condition;
+```
+
+**NOTE** - Be careful when deleting records in a table! Notice the WHERE clause in the DELETE statement. The WHERE clause specifies which record(s) should be deleted. If you omit the WHERE clause, all records in the table will be deleted!
+
+## Delete All Records
+
+It is possible to delete all rows in a table without deleting the table. This means that the table structure, attributes, and indexes will be intact
+
+```sql
+DELETE FROM table_name;
+```
+
+## Delete a Table
+
+To delete the table completely, use the `DROP TABLE` statement
+
+```sql
+DROP TABLE table_name;
+```
+
+# SQL TOP, LIMIT, FETCH FIRST or ROWNUM Clause
+
+The `SELECT TOP` clause is used to specify the number of records to return.
+
+The `SELECT TOP` clause is useful on large tables with thousands of records. Returning a large number of records can impact performance.
+
+```sql
+SELECT TOP 3 * FROM table_name;
+```
+
+> Select only the first 3 records of the Customers table
+
+**NOTE** - Not all database systems support the `SELECT TOP` clause. MySQL supports the `LIMIT` clause to select a limited number of records, while Oracle uses `FETCH FIRST n ROWS ONLY` and `ROWNUM`.
+
+### SQL Server / MS Access Syntax:
+
+```sql
+SELECT TOP number|percent column_name(s)
+FROM table_name
+WHERE condition;
+```
+
+### MySQL Syntax:
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+LIMIT number;
+```
+
+### Oracle 12 Syntax:
+
+```sql
+SELECT column_name(s)
+FROM table_name
+ORDER BY column_name(s)
+FETCH FIRST number ROWS ONLY;
+```
+
+### Older Oracle Syntax:
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE ROWNUM <= number;
+```
+
+### Older Oracle Syntax (with ORDER BY):
+
+```sql
+SELECT *
+FROM (SELECT column_name(s) FROM table_name ORDER BY column_name(s))
+WHERE ROWNUM <= number;
+```
+
+### Examples:
+
+The following SQL statement shows the equivalent example for MySQL
+
+```sql
+SELECT * FROM Customers
+LIMIT 3;
+```
+
+The following SQL statement shows the equivalent example for Oracle
+
+```sql
+SELECT * FROM Customers
+FETCH FIRST 3 ROWS ONLY;
+```
+
+### SQL TOP PERCENT Example
+
+The following SQL statement selects the first 50% of the records from the "Customers" table (for SQL Server/MS Access)
+
+```sql
+SELECT TOP 50 PERCENT * FROM Customers;
+```
+
+The following SQL statement shows the equivalent example for Oracle
+
+```sql
+SELECT * FROM Customers
+FETCH FIRST 50 PERCENT ROWS ONLY;
+```
+
+### Add a WHERE Clause and ORDERBY Keyword
+
+```sql
+SELECT TOP 3 * FROM Customers
+WHERE Country='Germany';
+```
+
+```sql
+SELECT TOP 3 * FROM Customers
+ORDER BY CustomerName DESC;
+```
+ 
