@@ -521,4 +521,164 @@ WHERE Country='Germany';
 SELECT TOP 3 * FROM Customers
 ORDER BY CustomerName DESC;
 ```
- 
+
+# SQL Aggregate Functions
+
+An aggregate function is a function that performs a calculation on a set of values, and returns a single value.
+
+Aggregate functions are often used with the `GROUP BY` clause of the `SELECT` statement. The `GROUP BY` clause splits the result-set into groups of values and the aggregate function can be used to return a single value for each group.
+
+The most commonly used SQL aggregate functions are:
+
+- `MIN()` - returns the smallest value within the selected column
+- `MAX()` - returns the largest value within the selected column
+- `COUNT()` - returns the number of rows in a set
+- `SUM()` - returns the total sum of a numerical column
+- `AVG()` - returns the average value of a numerical column
+
+Aggregate functions ignore null values (except for `COUNT()`).
+
+# SQL MIN() and MAX() Functions
+
+The `MIN()` function returns the smallest value of the selected column.
+
+The `MAX()` function returns the largest value of the selected column.
+
+```sql
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+```
+
+```sql
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+```
+
+## Set Column Name (Alias)
+
+When you use `MIN()` or `MAX()`, the returned column will not have a descriptive name. To give the column a descriptive name, use the AS keyword
+
+```sql
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+```
+
+## Use with GROUP BY
+
+Here we use the `MIN()` function and the GROUP BY clause, to return the smallest price for each category in the Products table
+
+```sql
+SELECT MIN(Price) AS SmallestPrice, CategoryID
+FROM Products
+GROUP BY CategoryID;
+```
+
+> You will learn more about the `GROUP BY` clause later
+
+# SQL COUNT() Function
+
+The `COUNT()` function returns the number of rows that matches a specified criterion.
+
+```sql
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+```
+
+Example:
+
+```sql
+SELECT COUNT(ProductID)
+FROM Products
+WHERE Price > 20;
+```
+
+## Count Records
+
+```sql
+SELECT COUNT(*)
+FROM Products;
+```
+
+## Ignore Duplicates
+
+```sql
+SELECT COUNT(DISTINCT Price)
+FROM Products;
+```
+
+## Use an Alias
+
+```sql
+SELECT COUNT(*) AS [Number of records]
+FROM Products;
+```
+
+## Use COUNT() with GROUP BY
+
+```sql
+SELECT COUNT(*) AS [Number of records], CategoryID
+FROM Products
+GROUP BY CategoryID;
+```
+
+> You will learn more about the `GROUP BY` clause later
+
+# SQL SUM() Function
+
+The `SUM()` function returns the total sum of a numeric column.
+
+```sql
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
+```
+
+Example:
+
+```sql
+SELECT SUM(Quantity)
+FROM OrderDetails;
+```
+
+## SUM() With an Expression
+
+The parameter inside the `SUM()` function can also be an expression
+
+```sql
+SELECT SUM(Quantity * 10)
+FROM OrderDetails;
+```
+
+# SQL AVG() Function
+
+The `AVG()` function returns the average value of a numeric column.
+
+```sql
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+```
+
+> NULL values are ignored.
+
+Example:
+
+```sql
+SELECT AVG(Price)
+FROM Products
+WHERE CategoryID = 1;
+```
+
+### Higher Than Average
+
+To list all records with a higher price than average, we can use the `AVG()` function in a sub query
+
+```sql
+SELECT * FROM Products
+WHERE price > (SELECT AVG(price) FROM Products);
+```
+
+**NOTE** - You can use `AS` Keyword (Alias) and `GROUP BY` Clause with `SUM()` and `AVG()`
