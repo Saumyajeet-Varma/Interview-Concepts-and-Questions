@@ -9,7 +9,9 @@ This repository is organized into various markdown files, each focusing on diffe
 <!-- - **Data Structures**: Arrays, Linked Lists, Stacks, Queues, Trees, Graphs, etc. -->
 <!-- - **Algorithms**: Sorting, Searching, Dynamic Programming, Greedy Algorithms, etc. -->
 <!-- - **System Design**: Principles, real-world examples, and problem-solving. -->
-- **JavaScript/React**: Interview questions and concepts related to JavaScript and React.
+<!-- - **JavaScript**: Interview questions and concepts related to Javascript. -->
+- **React**: Interview questions and concepts related to React.
+- **SQL**: Interview questions and concepts related to SQL.
 <!-- - **Backend Development**: Concepts, questions, and scenarios related to backend technologies. -->
 <!-- - **Other Topics**: Miscellaneous interview prep topics like databases, networking, and concurrency. -->
 

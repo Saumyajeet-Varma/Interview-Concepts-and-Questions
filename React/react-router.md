@@ -1,4 +1,4 @@
-# React Router DOM ?
+# React Router DOM
 
 React Router DOM is a popular library used in React applications to handle routing — meaning, it lets you define different URLs (paths) for different components or pages in your app.
 
@@ -86,7 +86,7 @@ export default function NotFound() {
 }
 ```
 
-# How do you create dynamic routes in React Router?
+# How do you create dynamic routes in React Router ?
 
 ## Define Dynamic Routes
 
@@ -129,7 +129,7 @@ function UserProfile() {
 }
 ```
 
-# How do you programmatically navigate in React Router?
+# How do you programmatically navigate in React Router ?
 
 `useNavigate()` is a React Router hook that gives you a `navigate` function.
 
@@ -219,7 +219,7 @@ import { Routes, Route } from 'react-router-dom';
 </Routes>
 ```
 
-## Why did they replace Switch with Routes?
+## Why did they replace Switch with Routes ?
 
 - More powerful matching (like "ranking" and "sorting" of routes automatically).
 - Simpler and more predictable behavior.
@@ -250,7 +250,7 @@ import { Routes, Route } from 'react-router-dom';
 - Replaces the traditional `<a>` tags.
 - It does not cause a full-page reload — it maintains the Single Page Application (SPA) experience.
 
-### Why use `<Link>` instead of `<a>`?
+### Why use `<Link>` instead of `<a>` ?
 
 - `<a>` refreshes the page by default
 - `<Link>` updates the URL in memory and lets React Router change the view without a page reload.
@@ -269,7 +269,7 @@ import { Link } from 'react-router-dom';
 - `NavLink` can automatically add an "active" style or class when the link matches the current URL.
 - `isActive` is a special prop provided by NavLink.
 
-### Why use `<NavLink>` instead of `<Link>`?
+### Why use `<NavLink>` instead of `<Link>` ?
 - When you want to highlight the link of the current page in a navbar or menu.
 - Example: the "Home" button looks bold when you are on the Home page.
 
@@ -447,12 +447,12 @@ function App() {
 
 # Nested routes in React Router
 
-## What Are Nested Routes?
+## What Are Nested Routes ?
 
 - Nested routes allow you to define routes within routes, reflecting the hierarchical structure of your UI in the URL and routing configuration.
 - They enable you to create parent-child relationships between views, where a parent component provides a layout or context, and child routes render inside it.
 
-## Why Use Nested Routes?
+## Why Use Nested Routes ?
 
 - Modular UI: Many UIs have shared layouts (e.g., a dashboard with a sidebar) where only a portion of the screen changes depending on the route.
 - Maintainability: Nesting routes keeps routing definitions clean and organized, especially in large applications.
