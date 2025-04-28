@@ -169,9 +169,9 @@ React components have a lifecycle that includes mounting, updating, and unmounti
 
 For class components, some key lifecycle methods include:
 
-**`componentDidMount()`**: Runs after the component is rendered to the DOM
-**`componentDidUpdate()`**: Runs after updates to the component
-**`componentWillUnmount()`**: Runs before the component is removed from the DOM
+- **`componentDidMount()`**: Runs after the component is rendered to the DOM
+- **`componentDidUpdate()`**: Runs after updates to the component
+- **`componentWillUnmount()`**: Runs before the component is removed from the DOM
 
 For functional components, with Hooks, the useEffect Hook replaces most lifecycle methods:
 
@@ -322,6 +322,8 @@ const counterReducer = (state = 0, action) => {
 // Store
 const store = createStore(counterReducer);
 ```
+
+## Context API vs Redux
 
 | Feature               | Context API                         | Redux                                |
 |------------------------|-------------------------------------|--------------------------------------|
