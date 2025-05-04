@@ -682,3 +682,243 @@ WHERE price > (SELECT AVG(price) FROM Products);
 ```
 
 **NOTE** - You can use `AS` Keyword (Alias) and `GROUP BY` Clause with `SUM()` and `AVG()`
+
+# SQL LIKE Operator
+
+The `LIKE` operator is used in a `WHERE` clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the `LIKE` operator:
+- The percent sign `%` represents zero, one, or multiple characters
+- The underscore sign `_` represents one, single character
+
+```sql
+SELECT column1, column2, ...
+FROM table_name
+WHERE columnN LIKE pattern;
+```
+
+## The _ Wildcard
+
+The `_` wildcard represents a single character.
+
+It can be any character or number, but each `_` represents one, and only one, character.
+
+```sql
+SELECT * FROM Customers
+WHERE city LIKE 'B_rl__';
+```
+
+> Return all customers from a city that starts with 'B' followed by one wildcard character, then 'rl' and then two wildcard characters
+
+## The % Wildcard
+
+The `%` wildcard represents any number of characters, even zero characters.
+
+```sql
+SELECT * FROM Customers
+WHERE city LIKE '%L%';
+```
+
+> Return all customers from a city that contains the letter 'L'
+
+**Starts With** - To return records that starts with a specific letter or phrase, add the `%` at the end of the letter or phrase
+
+**Ends With** - To return records that ends with a specific letter or phrase, add the % at the beginning of the letter or phrase
+
+**Note** - Any wildcard, like `%` and `_` , can be used in combination with other wildcards
+
+## More Wildcards
+
+| Symbol | Description                                      | Example                                                                 |
+|--------|--------------------------------------------------|-------------------------------------------------------------------------|
+| `*`    | Represents zero or more characters               | `bl*` finds `bl`, `black`, `blue`, and `blob`                           |
+| `?`    | Represents a single character                    | `h?t` finds `hot`, `hat`, and `hit`                                     |
+| `[]`   | Represents any single character within the brackets | `h[oa]t` finds `hot` and `hat`, but not `hit`                        |
+| `!`    | Represents any character not in the brackets     | `h[!oa]t` finds `hit`, but not `hot` and `hat`                          |
+| `-`    | Represents any single character within the specified range | `c[a-b]t` finds `cat` and `cbt`                              |
+| `#`    | Represents any single numeric character          | `2#5` finds `205`, `215`, `225`, `235`, `245`, `255`, `265`, `275`, `285`, and `295` |
+
+> In SQL, both `%` and `*` are wildcard or special characters, but they are used in different contexts and have different purposes <br>  `%` — Wildcard in `LIKE` queries <br> `*` — Select all columns
+
+# SQL IN Operator
+
+The `IN` operator allows you to specify multiple values in a `WHERE` clause.
+
+The `IN` operator is a shorthand for multiple `OR` conditions.
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name IN (value1, value2, ...);
+```
+
+Example:
+
+```sql
+SELECT * FROM Customers
+WHERE Country IN ('Germany', 'France', 'UK');
+```
+
+## NOT IN
+
+By using the `NOT` keyword in front of the `IN` operator, you return all records that are NOT any of the values in the list
+
+```sql
+SELECT * FROM Customers
+WHERE Country NOT IN ('Germany', 'France', 'UK');
+```
+
+> Return all customers that are NOT from 'Germany', 'France', or 'UK'
+
+## IN (SELECT)
+
+You can also use `IN` with a subquery in the `WHERE` clause.
+
+With a subquery you can return all records from the main query that are present in the result of the subquery.
+
+```sql
+SELECT * FROM Customers
+WHERE CustomerID IN (SELECT CustomerID FROM Orders);
+```
+
+> Return all customers that have an order in the Orders table
+
+## NOT IN (SELECT)
+
+You can also use `NOT IN` with a subquery in the `WHERE` clause.
+
+With a subquery you can return all records from the main query that are not present in the result of the subquery.
+
+```sql
+SELECT * FROM Customers
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);
+```
+
+> Return all customers that have NOT placed any orders in the Orders table
+
+# SQL BETWEEN Operator
+
+The `BETWEEN` operator selects values within a given range. The values can be numbers, text, or dates.
+
+The `BETWEEN` operator is inclusive: begin and end values are included.
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name BETWEEN value1 AND value2;
+```
+
+Example:
+
+```sql
+SELECT * FROM Products
+WHERE Price BETWEEN 100 AND 200;
+```
+
+## NOT BETWEEN
+
+To display the products outside the range of the previous example, use `NOT BETWEEN`
+
+```sql
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 100 AND 200;
+```
+
+## BETWEEN Text Values
+
+The following SQL statement selects all products with a ProductName alphabetically between Carnarvon Tigers and Mozzarella di Giovanni:
+
+```sql
+SELECT * FROM Products
+WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+ORDER BY ProductName;
+```
+
+## BETWEEN Dates
+
+The following SQL statement selects all orders with an OrderDate between '01-July-1996' and '31-July-1996'
+
+```sql
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN #07/01/1996# AND #07/31/1996#;
+```
+
+# SQL Aliases
+
+SQL aliases are used to give a table, or a column in a table, a temporary name.
+
+Aliases are often used to make column names more readable.
+
+An alias only exists for the duration of that query.
+
+An alias is created with the `AS` keyword.
+
+1. When alias is used on column:
+
+```sql
+SELECT column_name AS alias_name
+FROM table_name;
+```
+
+2. When alias is used on table:
+ 
+```sql
+SELECT column_name(s)
+FROM table_name AS alias_name;
+```
+
+Example:
+
+```sql
+SELECT CustomerID AS ID
+FROM Customers;
+```
+
+```sql
+SELECT CustomerID ID
+FROM Customers;
+```
+
+> Actually, in most database languages, you can skip the AS keyword and get the same result (`AS` is optional)
+
+## Using Aliases With a Space Character
+
+Using [square brackets] for aliases with space characters:
+
+```sql
+SELECT ProductName AS [My Great Products]
+FROM Products;
+```
+
+Using "double quotes" for aliases with space characters:
+
+```sql
+SELECT ProductName AS "My Great Products"
+FROM Products;
+```
+
+**Note** - Some database systems allows both [] and "", and some only allows one of them.
+
+## Concatenate Columns
+
+The following SQL statement creates an alias named "Address" that combine four columns (Address, PostalCode, City and Country):
+
+```sql
+SELECT CustomerName, Address + ', ' + PostalCode + ' ' + City + ', ' + Country AS Address
+FROM Customers;
+```
+
+### MySQL Example
+
+```sql
+SELECT CustomerName, CONCAT(Address,', ',PostalCode,', ',City,', ',Country) AS Address
+FROM Customers;
+```
+
+### Oracle Example
+
+```sql
+SELECT CustomerName, (Address || ', ' || PostalCode || ' ' || City || ', ' || Country) AS Address
+FROM Customers;
+```
+
