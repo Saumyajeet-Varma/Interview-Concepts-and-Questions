@@ -922,3 +922,155 @@ SELECT CustomerName, (Address || ', ' || PostalCode || ' ' || City || ', ' || Co
 FROM Customers;
 ```
 
+# SQL Joins
+
+A `JOIN` clause is used to combine rows from two or more tables, based on a related column between them.
+
+Example:
+
+Let's look at a selection from the "Orders" table:
+
+| OrderID | CustomerID | OrderDate   |
+|---------|-------------|-------------|
+| 10308   | 2           | 1996-09-18  |
+| 10309   | 37          | 1996-09-19  |
+| 10310   | 77          | 1996-09-20  |
+
+Then, look at a selection from the "Customers" table:
+
+| CustomerID | CustomerName                    | ContactName      | Country |
+|------------|----------------------------------|------------------|---------|
+| 1          | Alfreds Futterkiste              | Maria Anders     | Germany |
+| 2          | Ana Trujillo Emparedados y helados| Ana Trujillo     | Mexico  |
+| 3          | Antonio Moreno Taquería          | Antonio Moreno   | Mexico  |
+
+> Notice that the "CustomerID" column in the "Orders" table refers to the "CustomerID" in the "Customers" table. The relationship between the two tables above is the "CustomerID" column.
+
+Then, we can create the following SQL statement (that contains an `INNER JOIN`), that selects records that have matching values in both tables:
+
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+```
+
+and it will produce something like this
+
+| OrderID | CustomerName                    | OrderDate  |
+|---------|----------------------------------|------------|
+| 10308   | Ana Trujillo Emparedados y helados | 9/18/1996  |
+| 10365   | Antonio Moreno Taquería          | 11/27/1996 |
+| 10383   | Around the Horn                  | 12/16/1996 |
+| 10355   | Around the Horn                  | 11/15/1996 |
+| 10278   | Berglunds snabbköp               | 8/12/1996  |
+
+## Different Types of SQL JOINs
+
+- **`(INNER) JOIN`**: Returns records that have matching values in both tables
+- **`LEFT (OUTER) JOIN`**: Returns all records from the left table, and the matched records from the right table
+- **`RIGHT (OUTER) JOIN`**: Returns all records from the right table, and the matched records from the left table
+- **`FULL (OUTER) JOIN`**: Returns all records when there is a match in either left or right table
+
+<div>
+    <img src='../Images/inner_join.png' alt='Inner Join'>
+    <img src='../Images/left_join.png' alt='Left Join'>
+    <img src='../Images/right_join.png' alt='Right Join'>
+    <img src='../Images/full_join.png' alt='Full Join'>
+</div>
+
+## SQL INNER JOIN
+
+The `INNER JOIN` keyword selects records that have matching values in both tables.
+
+```sql
+SELECT column_name(s)
+FROM table1
+INNER JOIN table2
+ON table1.column_name = table2.column_name;
+```
+
+> `JOIN `and `INNER JOIN` will return the same result. <br> `INNER` is the default join type for `JOIN`, so when you write `JOIN` the parser actually writes `INNER JOIN`
+
+<img src='../Images/inner_join.png' alt='Inner Join'>
+
+**Note** - The `INNER JOIN` keyword returns only rows with a match in both tables. Which means that if you have a product with no CategoryID, or with a CategoryID that is not present in the Categories table, that record would not be returned in the result
+
+### JOIN Three Tables
+
+Example:
+
+```sql
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+```
+
+## SQL LEFT JOIN
+
+The `LEFT JOIN` keyword returns all records from the left table (table1), and the matching records from the right table (table2). The result is 0 records from the right side, if there is no match.
+
+```sql
+SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name = table2.column_name;
+```
+
+> In some databases `LEFT JOIN` is called `LEFT OUTER JOIN`.
+
+<img src='../Images/left_join.png' alt='Left Join'>
+
+## SQL RIGHT JOIN
+
+The `RIGHT JOIN` keyword returns all records from the right table (table2), and the matching records from the left table (table1). The result is 0 records from the left side, if there is no match.
+
+```sql
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;
+```
+
+> In some databases `RIGHT JOIN` is called `RIGHT OUTER JOIN`.
+
+<img src='../Images/right_join.png' alt='Right Join'>
+
+## SQL FULL JOIN
+
+The `FULL OUTER JOIN` keyword returns all records when there is a match in left (table1) or right (table2) table records.
+
+```sql
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name = table2.column_name
+WHERE condition;
+```
+
+> `FULL OUTER JOIN` and `FULL JOIN` are the same.
+
+<img src='../Images/full_join.png' alt='Full Join'>
+
+## SQL SELF JOIN
+
+A self join is a regular join, but the table is joined with itself
+
+```sql
+SELECT column_name(s)
+FROM table1 T1, table1 T2
+WHERE condition;
+```
+
+> T1 and T2 are different table aliases for the same table.
+
+Example: 
+
+```sql
+SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City
+FROM Customers A, Customers B
+WHERE A.CustomerID <> B.CustomerID
+AND A.City = B.City
+ORDER BY A.City;
+```
