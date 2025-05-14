@@ -973,10 +973,10 @@ and it will produce something like this
 - **`FULL (OUTER) JOIN`**: Returns all records when there is a match in either left or right table
 
 <div>
-    <img src='../Images/inner_join.png' alt='Inner Join'>
-    <img src='../Images/left_join.png' alt='Left Join'>
-    <img src='../Images/right_join.png' alt='Right Join'>
-    <img src='../Images/full_join.png' alt='Full Join'>
+    <img src='../Images/inner_join.jpg' alt='Inner Join'>
+    <img src='../Images/left_join.jpg' alt='Left Join'>
+    <img src='../Images/right_join.jpg' alt='Right Join'>
+    <img src='../Images/full_join.jpg' alt='Full Join'>
 </div>
 
 ## SQL INNER JOIN
@@ -992,7 +992,7 @@ ON table1.column_name = table2.column_name;
 
 > `JOIN `and `INNER JOIN` will return the same result. <br> `INNER` is the default join type for `JOIN`, so when you write `JOIN` the parser actually writes `INNER JOIN`
 
-<img src='../Images/inner_join.png' alt='Inner Join'>
+<img src='../Images/inner_join.jpg' alt='Inner Join'>
 
 **Note** - The `INNER JOIN` keyword returns only rows with a match in both tables. Which means that if you have a product with no CategoryID, or with a CategoryID that is not present in the Categories table, that record would not be returned in the result
 
@@ -1020,7 +1020,7 @@ ON table1.column_name = table2.column_name;
 
 > In some databases `LEFT JOIN` is called `LEFT OUTER JOIN`.
 
-<img src='../Images/left_join.png' alt='Left Join'>
+<img src='../Images/left_join.jpg' alt='Left Join'>
 
 ## SQL RIGHT JOIN
 
@@ -1035,7 +1035,7 @@ ON table1.column_name = table2.column_name;
 
 > In some databases `RIGHT JOIN` is called `RIGHT OUTER JOIN`.
 
-<img src='../Images/right_join.png' alt='Right Join'>
+<img src='../Images/right_join.jpg' alt='Right Join'>
 
 ## SQL FULL JOIN
 
@@ -1051,7 +1051,7 @@ WHERE condition;
 
 > `FULL OUTER JOIN` and `FULL JOIN` are the same.
 
-<img src='../Images/full_join.png' alt='Full Join'>
+<img src='../Images/full_join.jpg' alt='Full Join'>
 
 ## SQL SELF JOIN
 
