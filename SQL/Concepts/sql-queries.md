@@ -1074,3 +1074,49 @@ WHERE A.CustomerID <> B.CustomerID
 AND A.City = B.City
 ORDER BY A.City;
 ```
+
+# SQL UNION Operator
+
+The `UNION` operator is used to combine the result-set of two or more `SELECT` statements.
+
+- Every `SELECT` statement within `UNION` must have the same number of columns
+- The columns must also have similar data types
+- The columns in every `SELECT` statement must also be in the same order
+
+UNION Syntax:
+
+```sql
+SELECT column_name(s) FROM table1
+UNION
+SELECT column_name(s) FROM table2;
+```
+
+UNION ALL Syntax:
+
+```sql
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+```
+
+> The column names in the result-set are usually equal to the column names in the first SELECT statement.
+
+
+# SQL INTERSECT Operator
+
+The `INTERSECT` operator is used to combine the result-set of two `SELECT` statements and returns only the common rows between them.
+
+- Every `SELECT` statement within `INTERSECT` must have the same number of columns
+- The columns must also have similar data types
+- The columns in every `SELECT` statement must also be in the same order
+
+INTERSECT Syntax:
+
+```sql
+SELECT column_name(s) FROM table1
+INTERSECT
+SELECT column_name(s) FROM table2;
+```
+
+- **INTERSECT** returns only the rows that appear in both `SELECT` statements.
+- **INTERSECT ALL** is not supported by all database systems, unlike `UNION ALL`.
