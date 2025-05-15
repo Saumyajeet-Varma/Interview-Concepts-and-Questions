@@ -22,6 +22,8 @@ This repository is organized into various markdown files, each focusing on diffe
 3. Use this repository to practice common interview questions and reinforce core concepts.
 4. Feel free to fork this repo and contribute additional questions or concepts.
 
+> Need to have Git LFS installed to properly clone and work with LFS-tracked files
+
 ## Contributing
 
 If you'd like to contribute additional questions, solutions, or concepts to this repository, feel free to open a pull request. Any improvements or additions are always welcome!
