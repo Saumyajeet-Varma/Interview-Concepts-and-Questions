@@ -1208,3 +1208,97 @@ HAVING COUNT(Orders.OrderID) > 25;
 ```
 
 > The following SQL statement lists if the employees "Davolio" or "Fuller" have registered more than 25 orders
+
+# SQL EXISTS Operator
+
+The `EXISTS` operator is used to test for the existence of any record in a subquery.
+
+The `EXISTS` operator returns TRUE if the subquery returns one or more records.
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+```
+
+Example:
+
+The following SQL statement returns TRUE and lists the suppliers with a product price less than 20
+
+```sql
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+```
+
+# SQL ANY and ALL Operators
+
+The `ANY` and `ALL` operators allow you to perform a comparison between a single column value and a range of other values.
+
+## The SQL ANY Operator
+
+The `ANY` operator:
+
+- returns a boolean value as a result
+- returns TRUE if ANY of the subquery values meet the condition
+
+`ANY` means that the condition will be true if the operation is true for any of the values in the range.
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+```
+
+> Note: The operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=).
+
+Example:
+
+The following SQL statement lists the ProductName if it finds ANY records in the OrderDetails table has Quantity larger than 1000 (this will return FALSE because the Quantity column has no values larger than 1000)
+
+```sql
+SELECT ProductName
+FROM Products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity > 1000);
+```
+
+## The SQL ALL Operator
+
+The `ALL` operator:
+
+- returns a boolean value as a result
+- returns TRUE if ALL of the subquery values meet the condition
+- is used with `SELECT`, `WHERE` and `HAVING` statements
+
+`ALL` means that the condition will be true only if the operation is true for all values in the range.
+
+```sql
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+```
+
+> Note: The operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=).
+
+Example:
+
+The following SQL statement lists the ProductName if ALL the records in the OrderDetails table has Quantity equal to 10. This will of course return FALSE because the Quantity column has many different values (not only the value of 10)
+
+```sql
+SELECT ProductName
+FROM Products
+WHERE ProductID = ALL
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity = 10);
+```
