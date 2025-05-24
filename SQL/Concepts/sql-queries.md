@@ -1443,6 +1443,70 @@ END);
 
 > This SQL will order the customers by City. However, if City is NULL, then order by Country
 
+# SQL NULL Functions
+
+- `IFNULL()` Function
+- `ISNULL()` Function
+- `COALESCE()` Function 
+- `NVL()` Function
+
+### MySQL
+
+The MySQL `IFNULL()` function lets you return an alternative value if an expression is NULL:
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + IFNULL(UnitsOnOrder, 0))
+FROM Products;
+```
+
+or we can use the `COALESCE()` function, like this:
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+FROM Products;
+```
+
+### SQL Server
+
+The SQL Server `ISNULL()` function lets you return an alternative value when an expression is NULL:
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + ISNULL(UnitsOnOrder, 0))
+FROM Products;
+```
+
+or we can use the `COALESCE()` function, like this:
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+FROM Products;
+```
+
+### Oracle
+
+The Oracle `NVL()` function achieves the same result:
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + NVL(UnitsOnOrder, 0))
+FROM Products;
+```
+
+or we can use the `COALESCE()` function, like this:
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + COALESCE(UnitsOnOrder, 0))
+FROM Products;
+```
+
+### MS Access
+
+The MS Access `IsNull()` function returns TRUE (-1) if the expression is a null value, otherwise FALSE (0):
+
+```sql
+SELECT ProductName, UnitPrice * (UnitsInStock + IIF(IsNull(UnitsOnOrder), 0, UnitsOnOrder))
+FROM Products;
+```
+
 # SQL Comments
 
 Comments are used to explain sections of SQL statements, or to prevent execution of SQL statements.
