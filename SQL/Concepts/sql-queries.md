@@ -1302,3 +1302,167 @@ WHERE ProductID = ALL
   FROM OrderDetails
   WHERE Quantity = 10);
 ```
+
+# SQL SELECT INTO Statement
+
+The `SELECT INTO` statement copies data from one table into a new table.
+
+- Copy all columns into a new table:
+
+```sql
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+```
+
+- Copy only some columns into a new table:
+
+```sql
+SELECT column1, column2, column3, ...
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+```
+
+Examples:
+
+```sql
+SELECT * INTO CustomersBackup2017
+FROM Customers;
+```
+
+> This SQL statement creates a backup copy of Customers
+
+```sql
+SELECT * INTO CustomersBackup2017 IN 'Backup.mdb'
+FROM Customers;
+```
+
+> This SQL statement uses the `IN` clause to copy the table into a new table in another database
+
+```sql
+SELECT * INTO CustomersGermany
+FROM Customers
+WHERE Country = 'Germany';
+```
+
+> This SQL statement copies only the German customers into a new table
+
+```sql
+SELECT Customers.CustomerName, Orders.OrderID
+INTO CustomersOrderBackup2017
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+```
+
+> This SQL statement copies data from more than one table into a new table
+
+**NOTE**: `SELECT INTO` can also be used to create a new, empty table using the schema of another. Just add a `WHERE` clause that causes the query to return no data
+
+```sql
+SELECT * INTO newtable
+FROM oldtable
+WHERE 1 = 0;
+```
+
+# SQL INSERT INTO SELECT Statement
+
+The `INSERT INTO SELECT` statement copies data from one table and inserts it into another table.
+
+The `INSERT INTO SELECT` statement requires that the data types in source and target tables match.
+
+**NOTE**: The existing records in the target table are unaffected.
+
+- Copy all columns from one table to another table:
+
+```sql
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition;
+```
+
+- Copy only some columns from one table into another table:
+
+```sql
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+```
+
+Example:
+
+```sql
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers;
+```
+
+> The columns that are not filled with data, will contain NULL
+
+# SQL CASE Expression
+
+The `CASE` expression goes through conditions and returns a value when the first condition is met (like an if-then-else statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the `ELSE` clause.
+
+If there is no `ELSE` part and no conditions are true, it returns `NULL`.
+
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+```
+
+Examples:
+
+- Example 01:
+ 
+```sql
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
+```
+
+> This SQL goes through conditions and returns a value when the first condition is met
+
+```sql
+SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);
+```
+
+> This SQL will order the customers by City. However, if City is NULL, then order by Country
+
+# SQL Comments
+
+Comments are used to explain sections of SQL statements, or to prevent execution of SQL statements.
+
+- Single line comments start with `--`.
+
+```sql
+-- This is a single line comment
+SELECT * FROM Customers;
+```
+
+```sql
+SELECT * FROM Customers -- This one too
+```
+
+- Multi-line comments start with /* and end with */.
+
+```sql
+/* This is
+a multi-line
+comment */
+SELECT * FROM Customers;
+```
