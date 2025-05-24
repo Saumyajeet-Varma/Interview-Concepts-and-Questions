@@ -12,6 +12,7 @@ This repository is organized into various markdown files, each focusing on diffe
 <!-- - **JavaScript**: Interview questions and concepts related to Javascript. -->
 - **React**: Interview questions and concepts related to React.
 - **SQL**: Interview questions and concepts related to SQL.
+- **OOPs**: Interview questions and concepts related to OOPs.
 <!-- - **Backend Development**: Concepts, questions, and scenarios related to backend technologies. -->
 <!-- - **Other Topics**: Miscellaneous interview prep topics like databases, networking, and concurrency. -->
 
@@ -21,8 +22,6 @@ This repository is organized into various markdown files, each focusing on diffe
 2. Each file contains detailed explanations, solutions, and examples.
 3. Use this repository to practice common interview questions and reinforce core concepts.
 4. Feel free to fork this repo and contribute additional questions or concepts.
-
-> Need to have Git LFS installed to properly clone and work with LFS-tracked files
 
 ## Contributing
 
