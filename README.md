@@ -10,9 +10,10 @@ This repository is organized into various markdown files, each focusing on diffe
 <!-- - **Algorithms**: Sorting, Searching, Dynamic Programming, Greedy Algorithms, etc. -->
 <!-- - **System Design**: Principles, real-world examples, and problem-solving. -->
 <!-- - **JavaScript**: Interview questions and concepts related to Javascript. -->
+- **CN**: Interview questions and concepts related to Computer Network.
+- **OOPs**: Interview questions and concepts related to OOPs.
 - **React**: Interview questions and concepts related to React.
 - **SQL**: Interview questions and concepts related to SQL.
-- **OOPs**: Interview questions and concepts related to OOPs.
 <!-- - **Backend Development**: Concepts, questions, and scenarios related to backend technologies. -->
 <!-- - **Other Topics**: Miscellaneous interview prep topics like databases, networking, and concurrency. -->
 
