@@ -1,15 +1,15 @@
-## What is Computer Network ?
+# What is Computer Network ?
 
 A computer network is a system where two or more computers (or devices) are connected together to share resources, data, and applications.
 
-### Purpose of a Computer Network
+## Purpose of a Computer Network
 
 - **Data Sharing** – Share files, databases, and documents.
 - **Resource Sharing** – Use shared printers, storage devices, etc.
 - **Communication** – Email, messaging, video calls.
 - **Remote Access** – Access data from other systems remotely.
 
-### Types of Computer Network
+## Types of Computer Network
 
 | Type | Full Form                  | Description                                      |
 |------|----------------------------|--------------------------------------------------|
@@ -18,7 +18,7 @@ A computer network is a system where two or more computers (or devices) are conn
 | WAN  | Wide Area Network          | Covers large geographical areas (e.g., the Internet). |
 | PAN  | Personal Area Network      | Small network around a person (e.g., Bluetooth devices). |
 
-### Components of a Network
+## Components of a Network
 
 - **Nodes**: Devices like computers, phones, or printers.
 - **Router**: Directs data between networks.
@@ -26,7 +26,7 @@ A computer network is a system where two or more computers (or devices) are conn
 - **Modem**: Connects a network to the Internet.
 - **Cables/Wireless**: Physical or wireless links to transmit data.
 
-### Network Topologies
+## Network Topologies
 
 - **Bus** – All devices connected to a single cable.
 - **Star** – Devices connect to a central hub/switch.
@@ -34,14 +34,14 @@ A computer network is a system where two or more computers (or devices) are conn
 - **Mesh** – Devices are interconnected directly.
 - **Hybrid** – A combination of two or more topologies.
 
-### Types of Network Communication
+## Types of Network Communication
 
 - **Unicast** – One-to-one communication.
 - **Multicast** – One-to-many (selected group).
 - **Broadcast** – One-to-all communication.
 - **Anycast** – One-to-nearest (used in routing).
 
-### Protocols
+## Protocols
 
 - **TCP/IP** – Foundation of the Internet.
 - **HTTP/HTTPS** – For web access.
