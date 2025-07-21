@@ -17,7 +17,7 @@ The types of computer network topologies are as follows:
 
 Point-to-point networks contains exactly two hosts such as computer, switches or routers, servers connected back to back using a single piece of cable. Often, the receiving end of one host is connected to sending end of the other and vice-versa.
 
-<img src="../Assets/PPP.png" alt="Point-to-Point Topology" />
+<img src="../Assets/PPP.png" alt="Point-to-Point Topology" width="500px" style="display: block; margin: auto;" />
 
 If the hosts are connected point-to-point logically, then may have multiple intermediate devices. But the end hosts are unaware of underlying network and see each other as if they are connected directly.
 
