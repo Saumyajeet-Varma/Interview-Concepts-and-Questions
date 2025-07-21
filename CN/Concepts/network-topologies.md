@@ -17,7 +17,7 @@ The types of computer network topologies are as follows:
 
 Point-to-point networks contains exactly two hosts such as computer, switches or routers, servers connected back to back using a single piece of cable. Often, the receiving end of one host is connected to sending end of the other and vice-versa.
 
-<!-- IMAGE -->
+<img src="../Assets/PPP.png" alt="Point-to-Point Topology" />
 
 If the hosts are connected point-to-point logically, then may have multiple intermediate devices. But the end hosts are unaware of underlying network and see each other as if they are connected directly.
 
@@ -56,7 +56,9 @@ Both ends of the shared channel have line terminator. The data is sent in only o
 
 All hosts in Star topology are connected to a central device, known as hub device, using a point-to-point connection. That is, there exists a point to point connection between hosts and hub. The hub device can be any of the following:
 
-> Layer-1 device such as hub or repeater <br> Layer-2 device such as switch or bridge <br> Layer-3 device such as router or gateway
+- Layer-1 device such as hub or repeater 
+- Layer-2 device such as switch or bridge 
+- Layer-3 device such as router or gateway
 
 <!-- IMAGE -->
 
@@ -101,7 +103,8 @@ In this type of topology, a host is connected to one or multiple hosts.This topo
 
 Hosts in Mesh topology also work as relay for other hosts which do not have direct point-to-point links. Mesh technology comes into two types:
 
-> **Full Mesh**: All hosts have a point-to-point connection to every other host in the network. Thus for every new host n(n-1)/2 connections are required. It provides the most reliable network structure among all network topologies. <br> **Partially Mesh**: Not all hosts have point-to-point connection to every other host. Hosts connect to each other in some arbitrarily fashion. This topology exists where we need to provide reliability to some hosts out of all.
+- **Full Mesh**: All hosts have a point-to-point connection to every other host in the network. Thus for every new host n(n-1)/2 connections are required. It provides the most reliable network structure among all network topologies. 
+- **Partially Mesh**: Not all hosts have point-to-point connection to every other host. Hosts connect to each other in some arbitrarily fashion. This topology exists where we need to provide reliability to some hosts out of all.
 
 ### Techniques Used in Mesh Network Topology
 
