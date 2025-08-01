@@ -87,6 +87,93 @@ Access specifiers are the main pillar of implementing abstraction in C++. We can
 - Members declared as **public** in a class can be accessed from anywhere in the program.
 - Members declared as **private** in a class, can be accessed only from within the class. They are not allowed to be accessed from any part of the code outside the class.
 
+### Abstraction using Abstract class
+
+An abstract class in Cpp is a class that cannot be instantiated directly and is meant to be used as a base class. It contains at least one pure virtual function, which must be overridden by derived classes.
+
+- Abstract classes are used to provide a base class from which other classes can be derived
+- They cannot be instantiated and are meant to be inherited
+- Abstract classes are typically used to define an interface for derived classes
+
+#### Syntax
+
+```cpp
+class AbstractClass {
+public:
+    virtual void pureVirtualFunction() = 0;  // Pure virtual function
+};
+
+```
+
+> Any class that has a pure virtual function becomes an abstract class.
+
+#### Why to use Abstract class ?
+
+- To define a common interface for all derived classes.
+- To enforce that certain methods must be implemented by child classes.
+
+#### Example
+
+```cpp
+// Abstract class
+class Shape
+{
+public:
+    virtual void draw() = 0; // pure virtual function
+};
+
+class Circle : public Shape
+{
+public:
+    void draw()
+    {
+        cout << "Drawing a circle" << endl;
+    }
+};
+
+class Triangle : public Shape
+{
+public:
+    void draw()
+    {
+        cout << "Drawing a triangle" << endl;
+    }
+};
+
+class Square : public Shape
+{
+public:
+    void draw()
+    {
+        cout << "Drawing a square" << endl;
+    }
+};
+
+int main()
+{
+    Circle c;
+    Triangle t;
+    Square s;
+
+    c.draw();
+    t.draw();
+    s.draw();
+
+    return 0;
+}
+
+```
+
+#### Keypoints of abstract class
+
+| Feature                   | Explanation                                                |
+| ------------------------- | ---------------------------------------------------------- |
+| Abstract class            | Has at least one pure virtual function                     |
+| Cannot create objects     | You cannot create objects of abstract classes              |
+| Can have constructors     | But they can only be called via derived classes            |
+| Can have normal functions | Not all functions need to be pure virtual                  |
+| Helps in polymorphism     | You can use base class pointers to call overridden methods |
+
 ### Example of Abstraction
 
 ```cpp
@@ -103,15 +190,17 @@ public:
         a = x;
         b = y;
         c = a + b;
-        cout<<"Sum of the two number is : "<<c<<endl;
+        cout << "Sum of the two number is : " << c << endl;
     }
 };
+
 int main()
 {
     Summation s;
     s.sum(5, 4);
     return 0;
 }
+
 ```
 
 ### Advantages of Abstraction
