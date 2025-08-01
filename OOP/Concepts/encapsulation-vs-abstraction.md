@@ -4,6 +4,8 @@
 
 **Encapsulation** is defined as the wrapping up of data and information in a single unit. In Object Oriented Programming, encapsulation is defined as binding together the data and the functions that manipulate them.
 
+> Encapsulation is wrapping up of data and member functions in a single unit called class.
+
 In C++, OOPs encapsulation is implemented using classes and access specifiers that keeps the data, and the manipulating methods enclosed inside a single unit. The direct advantage of this packaging is that only the required components are visible to the user, and other information is hidden.
 
 ### Real-life example

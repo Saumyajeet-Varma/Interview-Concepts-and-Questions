@@ -1,0 +1,8 @@
+# Configs
+.vscode/
+
+# cpp files
+oop.cpp
+
+# Outppu files
+*.exe
