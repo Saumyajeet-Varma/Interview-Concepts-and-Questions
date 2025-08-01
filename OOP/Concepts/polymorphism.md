@@ -2,6 +2,8 @@
 
 Polymorphism means "*many forms*". It allows objects of different classes to be treated as objects of a common superclass. It enables a single function, method, or operator to behave differently based on the object it is acting upon.
 
+> Polymorphism is the ability of objects to take on different forms or behave in different ways depending on the context in which they are used.
+
 ## Types of polymorphism
 
 <img src="../Assets/polymorphism_classification.png" alt="Types of Polymorphism" >
@@ -134,6 +136,94 @@ int main() {
 
 > In the above example, a virtual function display() is defined in the base class Base, and it is overridden in the derived class Derived. The Base class pointer basePtr points to an object of the Derived class. When the display() function is called using the basePtr, the derived class version of the display() function is called, and prints "Derived class function." This is possible because call is resolved at the runtime.
 
+### Virtual Function
+
+A virtual function in Cpp is a member function in a base class that you can override in a derived class, and when called through a base class pointer or reference, the derived class version is executed (not the base one).
+
+#### Why to use Virtual Function
+
+- To achieve runtime polymorphism
+- To ensure correct method is called when using base class pointer
+- To allow flexibility and extensibility in design
+
+#### Features of Virtual Function
+
+| Feature                  | Description                                                             |
+| ------------------------ | ----------------------------------------------------------------------- |
+| Purpose                  | Enables **runtime polymorphism** (late binding)                         |
+| Declared with            | `virtual` keyword in base class                                         |
+| Works with               | Base class **pointer/reference** pointing to derived class object       |
+| Default binding behavior | Changes from **compile-time (static)** to **runtime (dynamic)** binding |
+
+#### Virtual Function Rules
+
+| Rule                                                | Explanation                            |
+| --------------------------------------------------- | -------------------------------------- |
+| Only works through **pointers/references**          | `Base*`, not `Base obj = Derived()`    |
+| Use `override` in derived class (optional but good) | Makes code clearer and safer           |
+| Destructors should be `virtual`                     | Ensures derived destructors are called |
+| Can be **pure virtual** (`= 0`)                     | Makes the class abstract (no objects)  |
+
+#### Example
+
+```cpp
+class Base {
+  public:
+    virtual void show() {
+        cout << "Base class show()" << endl;
+    }
+};
+
+class Derived : public Base {
+  public:
+    void show() override {
+        cout << "Derived class show()" << endl;
+    }
+};
+
+int main() {
+    Base* ptr;
+    Derived d;
+    ptr = &d;
+
+    ptr->show();  // Output: Derived class show()
+    return 0;
+}
+
+```
+
+> Without the `virtual` keyword, this would call `Base::show()` instead of `Derived::show()`.
+
+#### Virtual Destructors
+
+```cpp
+class Base {
+  public:
+    virtual void show() {
+        cout << "Base class show()" << endl;
+    }
+};
+
+class Derived : public Base {
+  public:
+    void show() override {
+        cout << "Derived class show()" << endl;
+    }
+};
+
+int main() {
+    Base* ptr;
+    Derived d;
+    ptr = &d;
+
+    ptr->show();  // Output: Derived class show()
+    return 0;
+}
+
+```
+
+> If `~Base()` isn't virtual, only `Base` destructor will run — leading to memory leaks!
+
 ## Difference Between Compile Time And Run Time Polymorphism
 
 | Compile-Time Polymorphism                                                                 | Run-Time Polymorphism                                                                 |
@@ -144,3 +234,4 @@ int main() {
 | Can be exhibited by:<br>1. Function Overloading<br>2. Operator Overloading                 | Exhibited by Function Overriding                                                       |
 | Faster execution rate.                                                                     | Comparatively slower execution rate.                                                   |
 | Inheritance is not involved.                                                               | Involves inheritance.                                                                  |
+
