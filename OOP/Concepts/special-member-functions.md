@@ -124,7 +124,6 @@ Constructor called for Samm
 Constructor called for Sv
 Destructor called for Sv
 Destructor called for Samm
-
 ```
 
 > Destructor is called in reverse order of creation when objects go out of scope.
