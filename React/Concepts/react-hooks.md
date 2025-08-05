@@ -1,4 +1,4 @@
-# Reach Hooks
+# React Hooks
 
 React Hooks are functions that let you "hook into" React state and lifecycle features from function components. Introduced in React 16.8, hooks enable function components to use features that were previously only available in class components.
 
