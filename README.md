@@ -11,7 +11,9 @@ This repository is organized into various markdown files, each focusing on diffe
 <!-- - **System Design**: Principles, real-world examples, and problem-solving. -->
 <!-- - **JavaScript**: Interview questions and concepts related to Javascript. -->
 - **CN**: Interview questions and concepts related to Computer Network.
-- **OOPs**: Interview questions and concepts related to OOPs.
+- **DBMS**: Interview questions and concepts related to Database Management System.
+- **OOPs**: Interview questions and concepts related to Object Oriented Programming.
+- **OS**: Interview questions and concepts related to Operating System.
 - **React**: Interview questions and concepts related to React.
 - **SQL**: Interview questions and concepts related to SQL.
 <!-- - **Backend Development**: Concepts, questions, and scenarios related to backend technologies. -->
