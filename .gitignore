@@ -3,6 +3,7 @@
 
 # cpp files
 oop.cpp
+test.cpp
 
 # Output files
 *.exe
