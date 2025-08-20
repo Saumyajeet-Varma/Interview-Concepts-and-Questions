@@ -1,5 +1,7 @@
 # SOLID Principle
 
+Let’s go through **SOLID principles** step by step. These are five design principles in Object-Oriented Programming (OOP) that help you write clean, maintainable, and extensible code.
+
 ## S - Single Responsibility Principle (SRP)
 
 A class should have **only one reason to change**. <br>
@@ -51,7 +53,7 @@ Objects of a superclass should be replaceable with objects of its subclasses **w
 
 Now `Penguin` can extend `NonFlyingBird` and still follow LSP.
 
-## Interface Segregation Principle (ISP)
+## I - Interface Segregation Principle (ISP)
 
 A client should not be forced to implement interfaces it doesn’t use. <br>
 Instead of one **fat interface**, create **smaller**, **specific ones**.
