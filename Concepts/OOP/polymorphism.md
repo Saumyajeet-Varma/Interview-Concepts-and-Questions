@@ -6,7 +6,7 @@ Polymorphism means "*many forms*". It allows objects of different classes to be 
 
 ## Types of polymorphism
 
-<img src="../Assets/polymorphism_classification.png" alt="Types of Polymorphism" >
+<img src="../../Assets/OOP/polymorphism_classification.png" alt="Types of Polymorphism" >
 
 ### Compile-Time Polymorphism
 

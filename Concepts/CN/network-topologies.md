@@ -17,7 +17,7 @@ The types of computer network topologies are as follows:
 
 Point-to-point networks contains exactly two hosts such as computer, switches or routers, servers connected back to back using a single piece of cable. Often, the receiving end of one host is connected to sending end of the other and vice-versa.
 
-<img src="../Assets/PPP.png" alt="Point-to-Point Topology" width="500px" />
+<img src="../../Assets/CN/PPP.png" alt="Point-to-Point Topology" width="500px" />
 
 If the hosts are connected point-to-point logically, then may have multiple intermediate devices. But the end hosts are unaware of underlying network and see each other as if they are connected directly.
 
@@ -37,7 +37,7 @@ If the hosts are connected point-to-point logically, then may have multiple inte
 
 In case of Bus topology, all devices share single communication line or cable.Bus topology may have problem while multiple hosts sending data at the same time. Therefore, Bus topology either uses CSMA/CD technology or recognizes one host as Bus Master to solve the issue. It is one of the simple forms of networking where a failure of a device does not affect the other devices. But failure of the shared communication line can make all other devices stop functioning.
 
-<img src="../Assets//bus.png" alt="Bus Topology" width="500px" />
+<img src="../../Assets/CN/bus.png" alt="Bus Topology" width="500px" />
 
 Both ends of the shared channel have line terminator. The data is sent in only one direction and as soon as it reaches the extreme end, the terminator removes the data from the line.
 
@@ -60,7 +60,7 @@ All hosts in Star topology are connected to a central device, known as hub devic
 - Layer-2 device such as switch or bridge 
 - Layer-3 device such as router or gateway
 
-<img src="../Assets/star.png" alt="Star Topology" width="500px" />
+<img src="../../Assets/CN/star.png" alt="Star Topology" width="500px" />
 
 As in Bus topology, hub acts as single point of failure. If hub fails, connectivity of all hosts to all other hosts fails. Every communication between hosts, takes place through only the hub.Star topology is not expensive as to connect one more host, only one cable is required and configuration is simple.
 
@@ -80,7 +80,7 @@ As in Bus topology, hub acts as single point of failure. If hub fails, connectiv
 
 In ring topology, each host machine connects to exactly two other machines, creating a circular network structure. When one host tries to communicate or send message to a host which is not adjacent to it, the data travels through all intermediate hosts. To connect one more host in the existing structure, the administrator may need only one more extra cable.
 
-<img src="../Assets/ring.png" alt="Ring Topology" width="500px" />
+<img src="../../Assets/CN/ring.png" alt="Ring Topology" width="500px" />
 
 Failure of any host results in failure of the whole ring.Thus, every connection in the ring is a point of failure. There are methods which employ one more backup ring.
 
@@ -99,7 +99,7 @@ Failure of any host results in failure of the whole ring.Thus, every connection 
 
 In this type of topology, a host is connected to one or multiple hosts.This topology has hosts in point-to-point connection with every other host or may also have hosts which are in point-to-point connection to few hosts only.
 
-<img src="../Assets/mesh.png" alt="Mesh Topology" width="500px" />
+<img src="../../Assets/CN/mesh.png" alt="Mesh Topology" width="500px" />
 
 Hosts in Mesh topology also work as relay for other hosts which do not have direct point-to-point links. Mesh technology comes into two types:
 
@@ -130,7 +130,7 @@ Also known as Hierarchical Topology, this is the most common form of network top
 
 This topology divides the network in to multiple levels/layers of network. Mainly in LANs, a network is bifurcated into three types of network devices. The lowermost is access-layer where computers are attached. The middle layer is known as distribution layer, which works as mediator between upper layer and lower layer. The highest layer is known as core layer, and is central point of the network, i.e. root of the tree from which all nodes fork.
 
-<img src="../Assets/tree.png" alt="Tree Topology" width="500px" />
+<img src="../../Assets/CN/tree.png" alt="Tree Topology" width="500px" />
 
 All neighboring hosts have point-to-point connection between them.Similar to the Bus topology, if the root goes down, then the entire network suffers even.though it is not the single point of failure. Every connection serves as point of failure, failing of which divides the network into unreachable segment.
 
@@ -150,7 +150,7 @@ All neighboring hosts have point-to-point connection between them.Similar to the
 
 This topology connects all the hosts in a linear fashion. Similar to Ring topology, all hosts are connected to two hosts only, except the end hosts.Means, if the end hosts in daisy chain are connected then it represents Ring topology.
 
-<img src="../Assets/daisy.png" alt="Daisy-Chain Topology" width="500px" />
+<img src="../../Assets/CN/daisy.png" alt="Daisy-Chain Topology" width="500px" />
 
 Each link in daisy chain topology represents single point of failure. Every link failure splits the network into two segments.Every intermediate host works as relay for its immediate hosts.
 
@@ -158,7 +158,7 @@ Each link in daisy chain topology represents single point of failure. Every link
 
 A network structure whose design contains more than one topology is said to be hybrid topology. Hybrid topology inherits merits and demerits of all the incorporating topologies.
 
-<img src="../Assets/hybrid.png" alt="Hybrid Topology" width="500px" />
+<img src="../../Assets/CN/hybrid.png" alt="Hybrid Topology" width="500px" />
 
 > The above picture represents an arbitrarily hybrid topology. The combining topologies may contain attributes of Star, Ring, Bus, and Daisy-chain topologies. Most WANs are connected by means of Dual-Ring topology and networks connected to them are mostly Star topology networks. Internet is the best example of largest Hybrid topology.
 

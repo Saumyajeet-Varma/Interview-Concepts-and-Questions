@@ -82,7 +82,7 @@ A derived class inherits from only one base class.
 
 > In this type, one class derives from another single class.
 
-<img src="../Assets/single-inheritance.png" alt="single-inheritance" />
+<img src="../../Assets/OOP/single-inheritance.png" alt="single-inheritance" />
 
 ```cpp
 #include <iostream>
@@ -117,7 +117,7 @@ A derived class inherits from more than one base class.
 
 > In this type, a class has multiple base classes and inherits features from all.
 
-<img src="../Assets/multiple-inheritance.png" alt="multiple-inheritance" />
+<img src="../../Assets/OOP/multiple-inheritance.png" alt="multiple-inheritance" />
 
 ```cpp
 #include <iostream>
@@ -160,7 +160,7 @@ A class is derived from a derived class.
 
 > In this type, a class derives from a class which itself is a derived class.
 
-<img src="../Assets/multilevel-inheritance.png" alt="multilevel-inheritance" />
+<img src="../../Assets/OOP/multilevel-inheritance.png" alt="multilevel-inheritance" />
 
 ```cpp
 #include <iostream>
@@ -203,7 +203,7 @@ Multiple derived classes inherit from a single base class.
 
 > In this type, several classes inherit from a single base class.
 
-<img src="../Assets/hierarchical-inheritance.png" alt="hierarchical-inheritance" />
+<img src="../../Assets/OOP/hierarchical-inheritance.png" alt="hierarchical-inheritance" />
 
 ```cpp
 #include <iostream>
@@ -251,7 +251,7 @@ A combination of more than one type of inheritance.
 
 > When two or more types of inheritance are combined, it is called hybrid inheritance. May cause diamond problem, solvable with virtual inheritance.
 
-<img src="../Assets/hybrid-inheritance.png" alt="hybrid-inheritance" />
+<img src="../../Assets/OOP/hybrid-inheritance.png" alt="hybrid-inheritance" />
 
 ```cpp
 #include <iostream>
